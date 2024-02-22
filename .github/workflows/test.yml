@@ -21,5 +21,14 @@ jobs:
           path: tokendir
           sparse-checkout: oidc-token.txt
           sparse-checkout-cone-mode: false
-      - run: ls -a && ls -a tokendir
+
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Install Sigstore
+        run: |
+          pip install sigstore
          
+      - name: Test oidc token validity
+        run: |
+          python test.py
