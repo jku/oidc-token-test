@@ -15,8 +15,10 @@ jobs:
     steps:
       - name: Checkout token
         uses: actions/checkout@v4
-        with:
+        with:    
+          repository: jku/extremely-dangerous-public-oidc-beacon
+          path: tokendir
           sparse-checkout: oidc-token.txt
           sparse-checkout-cone-mode: false
-      - run: ls -a
+      - run: ls -a && ls -a tokendir
          
