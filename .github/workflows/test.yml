@@ -31,4 +31,5 @@ jobs:
          
       - name: Test oidc token validity
         run: |
+          ls -la && ls -la tokendir
           python test.py
