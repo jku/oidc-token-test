@@ -16,19 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Checkout token
-        uses: actions/checkout@v4
-        with:    
-          repository: jku/extremely-dangerous-public-oidc-beacon
-          ref: current-token
-          path: tokendir
-          sparse-checkout: oidc-token.txt
-          sparse-checkout-cone-mode: false
-      
       - name: Install Sigstore
         run: |
           pip install sigstore
-         
+
+      - name: Download token
+        uses: jku/extremely-dangerous-public-oidc-beacon@push-token-to-branch
+
       - name: Test oidc token validity
         run: |
           python test.py
