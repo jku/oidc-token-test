@@ -21,7 +21,7 @@ jobs:
           pip install sigstore
 
       - name: Download token
-        uses: jku/extremely-dangerous-public-oidc-beacon@push-token-to-branch
+        uses: jku/extremely-dangerous-public-oidc-beacon@push-token-to-branch-TEST
 
       - name: Test oidc token validity
         run: |
