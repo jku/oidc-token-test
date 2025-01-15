@@ -1,0 +1,8 @@
+name: Calling Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-workflow:
+    uses: jku/oidc-token/.github/workflows/test.yml@main
