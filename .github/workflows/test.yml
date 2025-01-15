@@ -1,28 +1,16 @@
-name: Test cursed OIDC beacon
+name: Test workflow triggers
 
-# Schedule run for every 5 minutes, the minimum interval allowed. GitHub seems
-# to treat this as a suggestion when they're experiencing high load, letting
-# around an hour elapse between jobs.
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+  workflow_call:
   workflow_dispatch:
-
+  schedule:
+    - cron: '*/15 * * * *'
+  pull_request:
 
 jobs:
-  test:
+  your_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Sigstore
+      - name: echo
         run: |
-          pip install sigstore
-
-      - name: Download token
-        uses: jku/extremely-dangerous-public-oidc-beacon@push-token-to-branch-TEST
-
-      - name: Test oidc token validity
-        run: |
-          python test.py
+          echo "event name ${{github.event_name}}"
