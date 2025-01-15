@@ -5,4 +5,4 @@ on:
 
 jobs:
   call-workflow:
-    uses: jku/oidc-token/.github/workflows/test.yml@main
+    uses: ./.github/workflows/test.yml
